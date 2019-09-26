@@ -2,6 +2,7 @@
 /* 
  * File:   main.c
  * Author: Lukas Fischer
+ * GitHub: https://github.com/Jinthebandit/TicTacToe-C.git
  * 
  * Requirements:
  * Erstellen eines Tic Tac Toe Spiels
