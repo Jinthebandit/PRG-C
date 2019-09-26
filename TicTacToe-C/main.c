@@ -223,4 +223,4 @@ int zug(int p) {
             rows[b][a] = p;
         }
     }
-}¨
+}
