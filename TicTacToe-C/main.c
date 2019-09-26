@@ -68,11 +68,11 @@ int main() {
  */
 int showBoard(void) {     
     printf("Spielfeld:\n");
-    printf("\n   %d | %d | %d  ", board[0][0], board[0][1], board[0][2]);
-    printf("\n  ---+---+---");
-    printf("\n   %d | %d | %d  ", board[1][0], board[1][1], board[1][2]);
-    printf("\n  ---+---+---");
-    printf("\n   %d | %d | %d  ", board[2][0], board[2][1], board[2][2]);
+    printf("\n             %d | %d | %d  ", board[0][0], board[0][1], board[0][2]);
+    printf("\n            ---+---+---");
+    printf("\n             %d | %d | %d  ", board[1][0], board[1][1], board[1][2]);
+    printf("\n            ---+---+---");
+    printf("\n             %d | %d | %d  ", board[2][0], board[2][1], board[2][2]);
     printf("\n\n");
 }
 
@@ -112,7 +112,8 @@ int recursivePlays(int previousPlayer) {
         printf("Der Gewinner ist: Spieler %i", previousPlayer);
     } else if (checkBoardFull()){
         showBoard();
-        printf("\nSpiel beendet.\n\nEs gibt keinen Sieger.");
+        printf("\nSpiel beendet.\n\n"
+                "Es gibt keinen Sieger.");
     } else {
         executeMove(activePlayer);
         showBoard();
@@ -128,9 +129,9 @@ int recursivePlays(int previousPlayer) {
  * Gibt true oder false zurueck.
  */
 int checkWinner(int activePlayer) {
-    int i;
     bool isWinner = false;
     
+    int i;
     for (i=0; i<3; i++) {
         if (board[i][0] == activePlayer && board[i][1] == activePlayer && board[i][2] == activePlayer) {          // Reihen ueberpruefen
             isWinner = true;
@@ -196,10 +197,12 @@ int checkMoveValid(int row, int col) {
  * Der Wert des jeweiligen Spielers wird im Array auf der gesetzten Position geaendert.
  */
 int executeMove(int activePlayer) {
-    /* Eingabe durch Spieler anfordern. */
+    /* Eingabe durch Spieler anfordern. "Reihe,Spalte" */
     int col, row;
+    
     printf("Spieler %i Machen Sie ihren Zug (Reihe,Spalte): ", activePlayer);
-    scanf("%i,%i", &row, &col);  // Eingabe von Reihe (b) und Spalte (a) durch Spieler
+    scanf("%i,%i", &row, &col);
+    
     col -= 1;
     row -= 1;
     
@@ -209,7 +212,8 @@ int executeMove(int activePlayer) {
         executeMove(activePlayer);
     } else {
         if (checkMoveValid(row, col) == 1) {
-            printf("Position %i x %i ist bereits voll.\nBitte machen sie einen anderen Zug.\n", row, col);
+            printf("Position %i x %i ist bereits voll.\n"
+                    "Bitte machen sie einen anderen Zug.\n", row, col);
             executeMove(activePlayer);
         } else {
             board[row][col] = activePlayer;
