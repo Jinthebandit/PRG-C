@@ -208,7 +208,7 @@ void executeMove(int activePlayer) {
     char input[4];
     
     printf("Spieler %i Machen Sie ihren Zug (Reihe,Spalte): ", activePlayer);
-    if (fgets(input, 5, stdin)) {
+    if (fgets(input, 40, stdin)) {
         input[strcspn(input, "\n")+1] = 0;
         sscanf(input, "%i, %i", &row, &col);
     }
