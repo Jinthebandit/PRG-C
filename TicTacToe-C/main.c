@@ -32,12 +32,12 @@
 #define Player_02 2
 
 // forward declaration of functions
-int recursivePlays(int r);
-int checkWinner(int p);
-int executeMove(int p);
-int showBoard(void);
+void recursivePlays(int r);
+bool checkWinner(int p);
+void executeMove(int p);
+void showBoard(void);
 int randomizePlayer(void);
-int checkBoardFull(void);
+bool checkBoardFull(void);
 int checkMoveValid(int a, int b);
 
 
@@ -71,7 +71,7 @@ int main() {
  * Anzeige des aktuellen Spielbretts.
  * Die Werte werden aus dem Array ausgelesen.
  */
-int showBoard(void) {     
+void showBoard(void) {     
     printf("Spielfeld:\n");
     printf("\n             %d | %d | %d  ", board[0][0], board[0][1], board[0][2]);
     printf("\n            ---+---+---");
@@ -104,7 +104,7 @@ int randomizePlayer(void) {
  * Es wird ueberprueft ob noch Zuege gemacht werden koennen oder ob es einen Sieger gibt.
  * Funktion ruft sich selbst so oft neu auf, bis das Spielbrett voll ist, oder ein Sieger feststeht.
  */
-int recursivePlays(int previousPlayer) {  
+void recursivePlays(int previousPlayer) {  
     /* Spieler abwechseln */
     int activePlayer;
     switch(previousPlayer) {
@@ -133,7 +133,7 @@ int recursivePlays(int previousPlayer) {
  * Danach die Diagonalen.
  * Gibt true oder false zurueck.
  */
-int checkWinner(int activePlayer) {
+bool checkWinner(int activePlayer) {
     bool isWinner = false;
     
     int i;
@@ -160,7 +160,7 @@ int checkWinner(int activePlayer) {
  * Ueberpruefen, ob noch Zuege gemacht werden koennen oder ob das Spielbrett voll ist.
  * Gibt true oder false zurueck.
  */
-int checkBoardFull(void) {
+bool checkBoardFull(void) {
     bool boardFull;
     
     if(board[0][0] && board[0][1] && board[0][2] 
@@ -201,7 +201,7 @@ int checkMoveValid(int row, int col) {
  * Wenn der Zug zulaessig ist, wird der Zug ausgeführt.
  * Der Wert des jeweiligen Spielers wird im Array auf der gesetzten Position geaendert.
  */
-int executeMove(int activePlayer) {
+void executeMove(int activePlayer) {
     /* Eingabe durch Spieler anfordern. "Reihe,Spalte" */
     int col, row;
     
