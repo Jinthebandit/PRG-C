@@ -4,12 +4,17 @@
  * Author: Lukas Fischer
  * GitHub: https://github.com/Jinthebandit/TicTacToe-C.git
  * 
- * Requirements:
+ * REQUIREMENTS HW-01:
  * Erstellen eines Tic Tac Toe Spiels
  * Mit einem Spielfeld von 3x3 Zellen
  * Das Spielfeld wird mit printf() auf stdout ausgegeben
  * OPTIONAL: Gewinner wird ausgegeben
  * OPTIONAL: Nur zulässige Züge werden erlaubt
+ * 
+ * REQUIREMENTS HW-02
+ * Variablen für Spielfeld global definieren.
+ * Ausgabe des Spielfelds in seperate Funktion einbetten.
+ * Zulaessigkeit der Spielzuege ueberpruefen.
  * 
  * 
  * Created on 18. September 2019, 11:21
