@@ -26,6 +26,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <time.h>
+#include <string.h>
 
 // Makro Definition (Konstanten) für die Spieler erstellen
 #define Player_01 1
@@ -71,7 +72,7 @@ int main() {
  * Anzeige des aktuellen Spielbretts.
  * Die Werte werden aus dem Array ausgelesen.
  */
-void showBoard(void) {     
+void showBoard(void) {    
     printf("Spielfeld:\n");
     printf("\n             %d | %d | %d  ", board[0][0], board[0][1], board[0][2]);
     printf("\n            ---+---+---");
@@ -204,9 +205,13 @@ int checkMoveValid(int row, int col) {
 void executeMove(int activePlayer) {
     /* Eingabe durch Spieler anfordern. "Reihe,Spalte" */
     int col, row;
+    char input[4];
     
     printf("Spieler %i Machen Sie ihren Zug (Reihe,Spalte): ", activePlayer);
-    scanf("%i,%i", &row, &col);
+    if (fgets(input, 5, stdin)) {
+        input[strcspn(input, "\n")+1] = 0;
+        sscanf(input, "%i, %i", &row, &col);
+    }
     
     col -= 1;
     row -= 1;
