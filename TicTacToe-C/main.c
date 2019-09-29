@@ -23,10 +23,10 @@
 // Benötigte Bibliotheken importieren
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
-#include <time.h>
-#include <string.h>
+#include <stdbool.h>    // um true/false verwenden zu koennen
+#include <math.h>       // Mathematische Funktionen
+#include <time.h>       // time()
+#include <string.h>     // strcspn()
 
 // Makro Definition (Konstanten) für die Spieler erstellen
 #define Player_01 1
