@@ -73,13 +73,16 @@ int main() {
  * Die Werte werden aus dem Array ausgelesen.
  */
 void showBoard(void) {    
-    printf("Spielfeld:\n");
-    printf("\n             %d | %d | %d  ", board[0][0], board[0][1], board[0][2]);
-    printf("\n            ---+---+---");
-    printf("\n             %d | %d | %d  ", board[1][0], board[1][1], board[1][2]);
-    printf("\n            ---+---+---");
-    printf("\n             %d | %d | %d  ", board[2][0], board[2][1], board[2][2]);
-    printf("\n\n");
+    printf("Spielfeld:\n"
+            "\n             %d | %d | %d  "
+            "\n            ---+---+---"
+            "\n             %d | %d | %d  "
+            "\n            ---+---+---"
+            "\n             %d | %d | %d  "
+            "\n\n",
+            board[0][0], board[0][1], board[0][2],
+            board[1][0], board[1][1], board[1][2],
+            board[2][0], board[2][1], board[2][2]);
 }
 
 /*
