@@ -192,7 +192,8 @@ int checkMoveValid(int row, int col) {
      * validCode = 1 -> Feld bereits besetzt
      * validCode = 2 -> Alles in Ordnung
      */
-    if ((col != 0 && col != Player_01 && col != Player_02) || (row != 0 && row != Player_01 && row != Player_02)){
+    if ((col != 0 && col != Player_01 && col != Player_02) || 
+            (row != 0 && row != Player_01 && row != Player_02)){
         validCode = 0;
     } else if (board[row][col] != 0) {
         validCode = 1;
@@ -212,7 +213,8 @@ void executeMove(int activePlayer) {
     int col, row;
     char input[4];
     
-    printf("Spieler %i Machen Sie ihren Zug (Reihe,Spalte): ", activePlayer);
+    printf("Spieler %i Machen Sie ihren Zug (Reihe,Spalte): ", 
+            activePlayer);
     if (fgets(input, 40, stdin)) {
         input[strcspn(input, "\n")+1] = 0;
         sscanf(input, "%i, %i", &row, &col);
@@ -228,7 +230,8 @@ void executeMove(int activePlayer) {
     } else {
         if (checkMoveValid(row, col) == 1) {
             printf("Position %i x %i ist bereits voll.\n"
-                    "Bitte machen sie einen anderen Zug.\n", row, col);
+                    "Bitte machen sie einen anderen Zug.\n", 
+                    row, col);
             executeMove(activePlayer);
         } else {
             board[row][col] = activePlayer;
