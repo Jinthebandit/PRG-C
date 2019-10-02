@@ -116,6 +116,7 @@ void recursivePlays(int previousPlayer) {
     switch(previousPlayer) {
         case 1: activePlayer = Player_02; break;
         case 2: activePlayer = Player_01; break;
+        default: activePlayer = Player_02; break;
     }
     
     /* Auf Wincondition und verbliebene Zuege ueberpruefen */
