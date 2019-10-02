@@ -56,8 +56,10 @@ int board[3][3] = { 0 };
  */
 int main() {    
     /* Die Werte fuer Spieler 1 & 2 anzeigen. */
-    printf("Player 1: %d",Player_01);
-    printf("\nPlayer 2: %d\n\n",Player_02);
+    printf("Player 1: %d\n"
+           "Player 2: %d\n\n",
+            Player_01,
+            Player_02);
     
     /* Leeres Board einmal anzeigen. */
     showBoard();
