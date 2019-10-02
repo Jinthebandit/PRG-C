@@ -120,7 +120,8 @@ void recursivePlays(int previousPlayer) {
     
     /* Auf Wincondition und verbliebene Zuege ueberpruefen */
     if (checkWinner(previousPlayer)) {
-        printf("Der Gewinner ist: Spieler %i", previousPlayer);
+        printf("Der Gewinner ist: Spieler %i", 
+                previousPlayer);
     } else if (checkBoardFull()){
         showBoard();
         printf("\nSpiel beendet.\n\n"
@@ -144,16 +145,24 @@ bool checkWinner(int activePlayer) {
     
     int i;
     for (i=0; i<3; i++) {
-        if (board[i][0] == activePlayer && board[i][1] == activePlayer && board[i][2] == activePlayer) {          // Reihen ueberpruefen
+        if (board[i][0] == activePlayer && 
+                board[i][1] == activePlayer && 
+                board[i][2] == activePlayer) {      // Reihen ueberpruefen
             isWinner = true;
             break;
-        } else if (board[0][i] == activePlayer && board[1][i] == activePlayer && board[2][i] == activePlayer) {   // Spalten ueberpruefen
+        } else if (board[0][i] == activePlayer && 
+                board[1][i] == activePlayer && 
+                board[2][i] == activePlayer) {      // Spalten ueberpruefen
             isWinner = true;
             break;
-        } else if (board[0][0] == activePlayer && board[1][1] == activePlayer && board[2][2] == activePlayer) {   // Diagonale1 ueberpruefen
+        } else if (board[0][0] == activePlayer && 
+                board[1][1] == activePlayer && 
+                board[2][2] == activePlayer) {      // Diagonale1 ueberpruefen
             isWinner = true;
             break;
-        } else if (board[0][3] == activePlayer && board[1][1] == activePlayer && board[2][0] == activePlayer) {   // Diagonale2 ueberpruefen
+        } else if (board[0][3] == activePlayer && 
+                board[1][1] == activePlayer && 
+                board[2][0] == activePlayer) {      // Diagonale2 ueberpruefen
             isWinner = true;
             break;
         }
