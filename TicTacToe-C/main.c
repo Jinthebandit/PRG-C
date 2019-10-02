@@ -235,7 +235,7 @@ void executeMove(int activePlayer) {
     
     /* Gueltigkeit des Zugs ueberpruefen und wenn gueltig, ausfuehren. */
     if (checkMoveValid(row, col) == 0){
-        printf("Ungueltiger Zug.\n");
+        puts("Ungueltiger Zug.");
         executeMove(activePlayer);
     } else {
         if (checkMoveValid(row, col) == 1) {
