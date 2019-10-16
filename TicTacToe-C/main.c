@@ -122,7 +122,7 @@ void recursivePlays(int previousPlayer) {
     
     /* Auf Wincondition und verbliebene Zuege ueberpruefen */
     if (checkWinner(previousPlayer)) {
-        printf("Der Gewinner ist: Spieler %i", 
+        printf("Der Gewinner ist: Spieler %c", 
                 previousPlayer);
     } else if (checkBoardFull()){
         showBoard();
@@ -225,7 +225,7 @@ void executeMove(int activePlayer) {
     int col, row;
     char input[4];
     
-    printf("Spieler %i Machen Sie ihren Zug (Reihe,Spalte): ", 
+    printf("Spieler %c Machen Sie ihren Zug (Reihe,Spalte): ", 
             activePlayer);
     if (fgets(input, 40, stdin)) {
         input[strcspn(input, "\n")+1] = 0;
