@@ -29,8 +29,9 @@
 #include <string.h>     // strcspn()
 
 // Makro Definition (Konstanten) für die Spieler erstellen
-#define Player_01 1
-#define Player_02 2
+#define PLAYER1 88
+#define PLAYER2 79
+#define EMPTY   32
 
 // forward declaration of functions
 void recursivePlays(int r);
@@ -49,17 +50,17 @@ int checkMoveValid(int a, int b);
  *  [1][0] [1][1] [1][2]
  *  [2][0] [2][1] [2][2]
  */
-int board[3][3] = { 0 };
+int board[3][3] = { EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY };
 
 /*
  * Hier wird das Spiel initiiert.
  */
 int main() {    
     /* Die Werte fuer Spieler 1 & 2 anzeigen. */
-    printf("Player 1: %d\n"
-           "Player 2: %d\n\n",
-            Player_01,
-            Player_02);
+    printf("Player 1: %c\n"
+           "Player 2: %c\n\n",
+            PLAYER1,
+            PLAYER2);
     
     /* Leeres Board einmal anzeigen. */
     showBoard();
@@ -67,7 +68,7 @@ int main() {
     /* Rekursive Funktion solange ausfuehren, bis Spiel beendet. */
     recursivePlays(randomizePlayer());
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 /*
@@ -76,11 +77,11 @@ int main() {
  */
 void showBoard(void) {    
     printf("Spielfeld:\n"
-            "\n             %d | %d | %d  "
+            "\n             %c | %c | %c  "
             "\n            ---+---+---"
-            "\n             %d | %d | %d  "
+            "\n             %c | %c | %c  "
             "\n            ---+---+---"
-            "\n             %d | %d | %d  "
+            "\n             %c | %c | %c  "
             "\n\n",
             board[0][0], board[0][1], board[0][2],
             board[1][0], board[1][1], board[1][2],
@@ -98,9 +99,9 @@ int randomizePlayer(void) {
     
     /* Wenn Zufallszahl gerade -> Spieler 1, sonst Spieler 2 */    
     if (startPlayer % 2 == 0){
-        startPlayer = Player_01;
+        startPlayer = PLAYER1;
     } else {
-        startPlayer = Player_02;
+        startPlayer = PLAYER2;
     }
     
     return startPlayer;
@@ -114,9 +115,9 @@ void recursivePlays(int previousPlayer) {
     /* Spieler abwechseln */
     int activePlayer;
     switch(previousPlayer) {
-        case 1: activePlayer = Player_02; break;
-        case 2: activePlayer = Player_01; break;
-        default: activePlayer = Player_02; break;
+        case PLAYER1: activePlayer = PLAYER2; break;
+        case PLAYER2: activePlayer = PLAYER1; break;
+        default: activePlayer = PLAYER2; break;
     }
     
     /* Auf Wincondition und verbliebene Zuege ueberpruefen */
@@ -181,7 +182,7 @@ bool checkBoardFull(void) {
     
     if(board[0][0] && board[0][1] && board[0][2] 
         && board[1][0] && board[1][1] && board[1][2]
-        && board[2][0] && board[2][1] && board[2][2] != 0) {
+        && board[2][0] && board[2][1] && board[2][2] != EMPTY) {
         boardFull = true;
     } else {
         boardFull = false;
@@ -202,10 +203,11 @@ int checkMoveValid(int row, int col) {
      * validCode = 1 -> Feld bereits besetzt
      * validCode = 2 -> Alles in Ordnung
      */
-    if ((col != 0 && col != Player_01 && col != Player_02) || 
-            (row != 0 && row != Player_01 && row != Player_02)){
+    if ((col != 0 && col != 1 && col != 2) || 
+            (row != 0 && row != 1 && row != 2)){
         validCode = 0;
-    } else if (board[row][col] != 0) {
+        printf("%i,%i",row,col);
+    } else if (board[row][col] != EMPTY) {
         validCode = 1;
     }
     
